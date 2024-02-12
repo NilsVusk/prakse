@@ -60,10 +60,10 @@
                             </div>
                             <div class="bar col-md-6 mb-2 mt-2">
                                 <div class="list-group col-md-5">
-                                    <a href="#" class="list-group-item list-group-item-action">Sākums</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Galērija</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Par mums</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Kontakti</a>
+                                    <a href="?home" class="list-group-item list-group-item-action">Sākums</a>
+                                    <a href="?gallery" class="list-group-item list-group-item-action">Galērija</a>
+                                    <a href="?about" class="list-group-item list-group-item-action">Par mums</a>
+                                    <a href="?contacts" class="list-group-item list-group-item-action">Kontakti</a>
                                   </div>
                             </div>
                         </div>
