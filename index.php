@@ -38,15 +38,21 @@
                           </nav>
                     </header>
                     <?php
+                        $page = 'home';
+
                         if(isset($_GET['home'])) {
-                            include 'home.php';
+                            $page = 'home';
                         }elseif(isset($_GET['about'])) {
-                            include 'about.php';
+                            $page = 'about';
                         }elseif(isset($_GET['contacts'])) {
-                            include 'contacts.php';
+                            $page = 'contacts';
                         }elseif(isset($_GET['gallery'])) {
-                            include 'gallery.php';
+                            $page = 'gallery';
+                        }elseif(isset($_GET['gallery_id'])){
+                            $page = 'gallery_id';
                         }
+                        include $page . ".php";
+
                     ?>
                 <footer>
                     <div class="container bg-body-tertiary">

@@ -1,43 +1,47 @@
+<?php
+
+$servername = "localhost";
+$username = "admin1";
+$password = "admin1";
+$dbname = "prakse";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+$sql = "SELECT galleryID, name, mainImage FROM gallery";
+$results = $conn->query($sql);
+
+
+// foreach ($results as $result){
+//     echo $result['galleryID'] . " ";
+//     echo $result['name'] . " ";
+//     echo $result['mainImage'] . " ";
+// }
+
+?>
+
 <div class="content row">
     <div class="col-md-12">
         <div class="row">
             <h1>Gallery</h1>
             <div class="d-flex flex-wrap text-center mx-2">
-                <div class="col-md-4">
-                    <img class="rounded border border-secondary" src="https://picsum.photos/200/200">
-                    <div class="p-2 w-100">
-                        
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida metus semper leo imperdiet, at maximus sem blandit. Donec varius neque sem, vel elementum lorem condimentum eget.</p>
-                    </div>
+            <?php 
+                foreach ($results as $result){
+            ?>
+                <div class="col-md-4 p-3">
+                    <a href="?gallery_id&galleryID=<?php echo $result["galleryID"]; ?>">
+                        <img class="rounded border border-secondary w-100 p-3 m-3" src="<?php echo $result['mainImage']; ?>">
+                        <div class="p-2 w-100">
+                            
+                            <p><?php echo $result['name']; ?></p>
+                        </div>
+                    </a>
                 </div> 
-                <div class="col-md-4">
-                    <img class="rounded border border-secondary" src="https://picsum.photos/200/200">
-                
-                    <div class="p-2 w-100">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida metus semper leo imperdiet, at maximus sem blandit. Donec varius neque sem, vel elementum lorem condimentum eget.</p>
-                    </div>
-                </div> 
-                <div class="col-md-4">
-                    <img class="rounded border border-secondary" src="https://picsum.photos/200/200">
-                
-                    <div class="p-2 w-100">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida metus semper leo imperdiet, at maximus sem blandit. Donec varius neque sem, vel elementum lorem condimentum eget.</p>
-                    </div>
-                </div> 
-                <div class="col-md-4">
-                    <img class="rounded border border-secondary" src="https://picsum.photos/200/200">
-                
-                    <div class="p-2 w-100">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida metus semper leo imperdiet, at maximus sem blandit. Donec varius neque sem, vel elementum lorem condimentum eget.</p>
-                    </div>
-                </div> 
-                <div class="col-md-4">
-                    <img class="rounded border border-secondary" src="https://picsum.photos/200/200">
-                
-                    <div class="p-2 w-100">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida metus semper leo imperdiet, at maximus sem blandit. Donec varius neque sem, vel elementum lorem condimentum eget.</p>
-                    </div>
-                </div> 
+                    
+            <?php
+                }
+            ?>
+
             </div>
         </div>
     </div>
