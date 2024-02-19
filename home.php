@@ -1,3 +1,19 @@
+<?php
+
+$servername = "localhost";
+$username = "admin1";
+$password = "admin1";
+$dbname = "prakse";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+$sql = "SELECT news_id, name,  main_image, context FROM news";
+$results = $conn->query($sql);
+
+$news_id = $_GET['news_id'];
+
+?>
+
 <div class="content row">
     <div class="col-md-8">
         <section class="row">
@@ -37,7 +53,7 @@
         <aside>
             <div class="container bg-dark-subtle">
                 <div class="row">
-                    <ul class="list-unstyled">
+                    <!-- <ul class="list-unstyled">
                         <li>
 
                             <div class="d-flex align-items-center m-2">
@@ -74,8 +90,29 @@
                                 </div>
                             </div>
                         </li>     
-                    </ul>
-                </div>
+                    </ul> -->
+
+                    <?php 
+                        foreach ($results as $result){
+                    ?>
+                    <div class="d-flex align-items-center m-2">
+                        <div class="col-md-4">
+                            <a href="?news_id&news_id=<?php echo $result["news_id"]; ?>">
+                                <img class="rounded border border-secondary w-75" src="<?php echo $result['main_image']; ?>">
+                                
+                                    <p><?php echo $result['name']; ?></p>
+                                
+                            </a>
+                        </div>
+                
+                        <div class="p-3 col-md-8 ">
+                            <p><?php echo $result['context']; ?></p>
+                        </div>
+                    </div>
+                    <?php
+                        }
+                    ?>
+                </div>       
             </div>
         </aside>
     </div>

@@ -42,6 +42,8 @@
 
                         if(isset($_GET['home'])) {
                             $page = 'home';
+                        }elseif(isset($_GET['news_id'])){
+                            $page = 'news_id';
                         }elseif(isset($_GET['about'])) {
                             $page = 'about';
                         }elseif(isset($_GET['contacts'])) {
