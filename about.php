@@ -1,30 +1,54 @@
+<?php
+
+$servername = "localhost";
+$username = "admin1";
+$password = "admin1";
+$dbname = "prakse";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+    
+$sql = "SELECT name, content, image FROM about";
+$results = $conn->query($sql);
+$name = mysqli_fetch_array($results);
+
+$jsonString = $name['image'];
+
+// Decode the JSON string into a PHP array
+$phpArray = json_decode($jsonString, true);
+
+echo "<h1>". $name['name'] ."</h1>"
+?>
+
 <div class="content row">
-    <h1>About Us</h1>
     <div class="col-md-6">
         <div class="row">
             
             <div class="d-flex flex-wrap">
-                <div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida metus semper leo imperdiet, at maximus sem blandit. Donec varius neque sem, vel elementum lorem condimentum eget. Aenean id nisi non elit rhoncus tincidunt. Suspendisse ac euismod mi. Sed consectetur turpis lectus, a lobortis enim ultrices quis. Proin tempor auctor venenatis. Aenean eu neque pellentesque, laoreet arcu eget, imperdiet ante.</p>
-                </div> 
+                <?php
+                    foreach ($results as $result){
+                        echo $result['content'];
+                    }
+                ?>
             </div>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="row">
-            <div>
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
+                        <?php
+                            foreach ($phpArray as $image){
+                        ?>
+                        
                         <div class="carousel-item active">
-                        <img src="https://picsum.photos/600/400" class="d-block w-100" alt="image 1">
+                        <img src="<?php echo $image; ?>" class="d-block w-100" alt="image1">
                         </div>
-                        <div class="carousel-item">
-                        <img src="https://s1.1zoom.me/prev/587/Waves_Closeup_Water_586392_600x400.jpg" class="d-block w-100" alt="image 2">
-                        </div>
-                        <div class="carousel-item">
-                        <img src="https://www.1zoom.me/prev/322/321100.jpg" class="d-block w-100" alt="image 3">
-                        </div>
+                        
+                        <?php
+                            }
+                        ?>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
