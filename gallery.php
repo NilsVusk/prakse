@@ -1,15 +1,7 @@
 <?php
-
-$servername = "localhost";
-$username = "admin1";
-$password = "admin1";
-$dbname = "prakse";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
 $sql = "SELECT galleryID, name, mainImage FROM gallery";
 $results = $conn->query($sql);
+$gallery = mysqli_fetch_array($results);
 
 
 // foreach ($results as $result){
@@ -23,7 +15,7 @@ $results = $conn->query($sql);
 <div class="content row">
     <div class="col-md-12">
         <div class="row">
-            <h1>Gallery</h1>
+            <h1><?php echo $gallery['name']; ?></h1>
             <div class="d-flex flex-wrap text-center mx-2">
             <?php 
                 foreach ($results as $result){

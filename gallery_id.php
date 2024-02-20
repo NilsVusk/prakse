@@ -1,25 +1,4 @@
 <?php
-
-$servername = "localhost";
-$username = "admin1";
-$password = "admin1";
-$dbname = "prakse";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
-
-// foreach ($results as $result){
-    //     echo $result['galleryID'] . " ";
-    //     echo $result['name'] . " ";
-//     echo $result['mainImage'] . " ";
-// }
-
-// foreach ($results as $result){
-    //     echo $result['name'] . " ";
-    // }
-    
 $gallery_id = $_GET['galleryID'];
 $test = $_GET['test'];
     

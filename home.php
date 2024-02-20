@@ -1,14 +1,5 @@
 <?php
 
-$servername = "localhost";
-$username = "admin1";
-$password = "admin1";
-$dbname = "prakse";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
-
 $newsSql = "SELECT news_id, name,  main_image, context FROM news ORDER BY news_id DESC";
 
 
@@ -38,18 +29,18 @@ $news_id = $_GET['news_id'];
                 <?php 
                     $count = 0;
 
-                    foreach ($newsResults as $result){
+                    foreach ($newsResults as $news){
 
                         if ($count == 0){
                         ?>
-                        <h1> <?php echo $result['name']; ?></h1>
+                        <h1> <?php echo $news['name']; ?></h1>
                         <div class="d-flex flex-wrap p-2">
                             <div class="col-md-6">
-                                <img class="rounded border border-secondary w-75" src="<?php echo $result['main_image']; ?>">
+                                <img class="rounded border border-secondary w-75" src="<?php echo $news['main_image']; ?>">
                             </div>
                     
                             <div class="col-md-6 ">
-                                <p><?php echo $result['context']; ?></p>
+                                <p><?php echo $news['context']; ?></p>
                             </div>
                         </div>
                         <?php
@@ -77,14 +68,14 @@ $news_id = $_GET['news_id'];
                 <?php 
                     $count = 0;
 
-                    foreach ($newsResults as $result){
+                    foreach ($newsResults as $news){
 
                         if ($count == 1){
                         ?>
-                        <h2><?php echo $result['name']; ?></h2>
+                        <h2><?php echo $news['name']; ?></h2>
                         <div class="d-flex flex-wrap">
                             <?php
-                                $text_length = strlen($result['context']);
+                                $text_length = strlen($news['context']);
                                 $half_text = $text_length / 2;
 
                                 $col_limit = 200;
@@ -93,7 +84,7 @@ $news_id = $_GET['news_id'];
                                 if ($half_text >=  $col_limit){
                                     ?>
                                         <div class="col-md-6 ">
-                                        <p><?php echo substr($result['context'], $half_text); ?></p>
+                                        <p><?php echo substr($news['context'], $half_text); ?></p>
                                         </div>
                                         <div class="col-md-6">
                                             <p><?php echo substr($result['context'], -$half_text); ?></p>
@@ -102,7 +93,7 @@ $news_id = $_GET['news_id'];
                                 }else{
                                     ?>
                                         <div class="col-md-12 ">
-                                        <p><?php echo $result['context']; ?></p>
+                                        <p><?php echo $news['context']; ?></p>
                                         </div>
                                     <?php
                                 }
@@ -110,7 +101,7 @@ $news_id = $_GET['news_id'];
                                 
                                 ?>
                             <div class="col-md-6 h-25">
-                                <img class="rounded border border-secondary img-fluid w-100" src="<?php echo $result['main_image']; ?>">                              
+                                <img class="rounded border border-secondary img-fluid w-100" src="<?php echo $news['main_image']; ?>">                              
                             </div>
                         </div>
                             
@@ -130,22 +121,22 @@ $news_id = $_GET['news_id'];
                     <?php 
                         $count = 0;
 
-                        foreach ($newsResults as $result){
+                        foreach ($newsResults as $news){
 
                             if ($count >= 2){
                             ?>
                             <div class="d-flex align-items-center m-2">
                                 <div class="col-md-4">
-                                    <a href="?news_id&news_id=<?php echo $result["news_id"]; ?>">
-                                        <img class="rounded border border-secondary w-75" src="<?php echo $result['main_image']; ?>">
+                                    <a href="?news_id&news_id=<?php echo $news["news_id"]; ?>">
+                                        <img class="rounded border border-secondary w-75" src="<?php echo $news['main_image']; ?>">
                                         
-                                            <p><?php echo $result['name']; ?></p>
+                                            <p><?php echo $news['name']; ?></p>
                                         
                                     </a>
                                 </div>
                         
                                 <div class="p-3 col-md-8 ">
-                                    <p><?php echo $result['context']; ?></p>
+                                    <p><?php echo $news['context']; ?></p>
                                 </div>
                             </div>
                             <?php

@@ -1,23 +1,14 @@
 <?php
-
-$servername = "localhost";
-$username = "admin1";
-$password = "admin1";
-$dbname = "prakse";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-    
 $sql = "SELECT name, content, image FROM about";
 $results = $conn->query($sql);
-$name = mysqli_fetch_array($results);
+$about = mysqli_fetch_array($results);
 
-$jsonString = $name['image'];
+$jsonString = $about['image'];
 
 // Decode the JSON string into a PHP array
 $phpArray = json_decode($jsonString, true);
 
-echo "<h1>". $name['name'] ."</h1>"
+echo "<h1>". $about['name'] ."</h1>"
 ?>
 
 <div class="content row">
@@ -26,9 +17,7 @@ echo "<h1>". $name['name'] ."</h1>"
             
             <div class="d-flex flex-wrap">
                 <?php
-                    foreach ($results as $result){
-                        echo $result['content'];
-                    }
+                    echo $about['content'];
                 ?>
             </div>
         </div>
