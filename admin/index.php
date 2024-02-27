@@ -1,54 +1,5 @@
 <?php
     include '../config.php';
-    
-
- 
-    if(isset($_POST['submit-webform'])) {
-
-
-
-        $adress = $_POST['adress'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $inputQuery = "UPDATE config SET logo = '". $logo ."', adress = '". $adress ."', email = '". $email ."', phone ='". $phone . "'";
-        var_dump($inputQuery);
-        if ($conn->query($inputQuery) === TRUE) {
-            echo "record inserted successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-    }elseif(isset($_POST['submit-adminform'])) {
-
-
-        
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-
-        $user_id = 0;
-
-        $inputQuery = "UPDATE user SET username = '". $username ."', email = '". $email ."'";
-
-        // var_dump($inputQuery);
-
-        
-
-        if ($conn->query($inputQuery) === TRUE) {
-            echo "record inserted successfully";
-            
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-    }
-
-
-
-    $sql = "SELECT * FROM config";
-    $results = $conn->query($sql);
-    $config = mysqli_fetch_array($results);
-
-    $userSql = "SELECT * FROM user";
-    $adminResults = $conn->query($userSql);
-    $admin = mysqli_fetch_array($adminResults);
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,7 +26,7 @@
                         <div class="container-fluid align-items-center">
                         
                             <div class="flex-nowrap">
-                                <a href="?admin_dashboard" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                                <a href="?config" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
                                     <img src="https://picsum.photos/50">
                                 </a>
 
@@ -85,16 +36,19 @@
 
                                 <div class="navbar-nav collapse navbar-collapse flex-column w-75" id="navbarNavAltMarkup">
                                 
-                                    <a href="?admin_dashboard" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                                        <i class="fa-solid fa-gauge"></i>
+                                    <a href="?config" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                                        <i class="fa-solid fa-newspaper"></i>
                                     </a>
                                 
-                                    <a href="?admin_order" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                                        <i class="fa-solid fa-table"></i>
+                                    <a href="?gallery" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                                        <i class="fa-solid fa-image"></i>
                                     </a>
                                 
-                                    <a href="?admin_customers" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                                        <i class="fa-solid fa-person"></i>
+                                    <a href="?about" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                    <a href="?contacts" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                        <i class="fa-solid fa-book"></i>
                                     </a>
                                 </div>
                             </div>
@@ -104,14 +58,18 @@
                 <div class="col-md p-3 min-vh-100">
                     <!-- content -->
                     <?php
-                    $page = 'admin_dashboard';
+                    $page = 'settings';
 
-                    if(isset($_GET['admin_dashboard'])) {
-                        $page = 'admin_dashboard';
-                    }elseif(isset($_GET['admin_customers'])) {
-                        $page = 'admin_customers';
-                    }elseif(isset($_GET['admin_order'])) {
-                        $page = 'admin_order';
+                    if(isset($_GET['settings'])) {
+                        $page = 'settings';
+                    }elseif(isset($_GET['about'])) {
+                        $page = 'about';
+                    }elseif(isset($_GET['gallery'])) {
+                        $page = 'gallery';
+                    }elseif(isset($_GET['gallery_form'])) {
+                        $page = 'gallery_form';
+                    }elseif(isset($_GET['contacts'])) {
+                        $page = 'contacts';
                     }
                     include $page . ".php";
 
