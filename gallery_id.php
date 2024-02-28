@@ -23,7 +23,7 @@ echo "<h1>". $name['name'] ."</h1>"
                     foreach ($phpArray as $image){
                 ?>
                         <div class="col-md-4 p-3">
-                            <img class="w-100 p-3 m-3" src="<?php echo $image; ?>">
+                            <img class="w-100 p-3 m-3" src="images/<?php echo $image; ?>">
                         </div>
                     <?php
                     }
