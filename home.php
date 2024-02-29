@@ -36,7 +36,7 @@ $news_id = $_GET['news_id'];
                         <h1> <?php echo $news['name']; ?></h1>
                         <div class="d-flex flex-wrap p-2">
                             <div class="col-md-6">
-                                <img class="rounded border border-secondary w-75" src="<?php echo $news['main_image']; ?>">
+                                <img class="rounded border border-secondary w-75" src="images/<?php echo $news['main_image']; ?>">
                             </div>
                     
                             <div class="col-md-6 ">
@@ -101,7 +101,7 @@ $news_id = $_GET['news_id'];
                                 
                                 ?>
                             <div class="col-md-6 h-25">
-                                <img class="rounded border border-secondary img-fluid w-100" src="<?php echo $news['main_image']; ?>">                              
+                                <img class="rounded border border-secondary img-fluid w-100" src="images/<?php echo $news['main_image']; ?>">                              
                             </div>
                         </div>
                             

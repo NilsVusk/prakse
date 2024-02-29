@@ -14,6 +14,9 @@
         <link href="../assets/style.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="../assets/script.js"></script>
     </head>
 
@@ -37,7 +40,7 @@
 
                                 <div class="navbar-nav collapse navbar-collapse flex-column w-75" id="navbarNavAltMarkup">
                                 
-                                    <a href="?config" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                                    <a href="?news" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
                                         <i class="fa-solid fa-newspaper"></i>
                                     </a>
                                 
@@ -50,6 +53,9 @@
                                     </a>
                                     <a href="?contacts" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                                         <i class="fa-solid fa-book"></i>
+                                    </a>
+                                    <a href="?config" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                        <i class="fa-solid fa-gear"></i>
                                     </a>
                                 </div>
                             </div>
@@ -65,6 +71,10 @@
                         $page = 'settings';
                     }elseif(isset($_GET['about'])) {
                         $page = 'about';
+                    }elseif(isset($_GET['news'])) {
+                        $page = 'news';
+                    }elseif(isset($_GET['news_form'])) {
+                        $page = 'news_form';
                     }elseif(isset($_GET['gallery'])) {
                         $page = 'gallery';
                     }elseif(isset($_GET['gallery_form'])) {

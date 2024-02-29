@@ -5,6 +5,8 @@
     $mainImage = $_FILES['mainImage']['name'];
     $images = $_FILES['images']['name'];
 
+
+
     if($_GET['galleryID']) {
         // var_dump("update");
         $gallery_title = "Edit Gallery";
