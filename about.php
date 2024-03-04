@@ -28,14 +28,16 @@ echo "<h1>". $about['name'] ."</h1>"
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
                         <?php
+                            $count = 0;
                             foreach ($phpArray as $image){
                         ?>
                         
                         <div class="carousel-item active">
-                        <img src="<?php echo $image; ?>" class="d-block w-100" alt="image1">
+                        <img src="images/<?php echo $image; ?>" class="d-block w-100" alt="image<?php echo $count ?>">
                         </div>
                         
                         <?php
+                            $count++;
                             }
                         ?>
                     </div>

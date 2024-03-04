@@ -1,60 +1,3 @@
-<?php
-
-    $gallery_id = $_GET['galleryID'];
-    $name = $_POST['name'];
-    $mainImage = $_FILES['mainImage']['name'];
-    $images = $_FILES['images']['name'];
-
-
-
-    if($_GET['galleryID']) {
-        // var_dump("update");
-        $gallery_title = "Edit Gallery";
-        $inputQuery = "UPDATE gallery SET `name` = '". $name ."', `mainImage` = '". $mainImage ."', `images` = '". json_encode($images) ."' WHERE galleryID = '". $gallery_id ."'";
-
-        $sqlGallery = "SELECT `name`, `mainImage`, `images` FROM gallery WHERE galleryID='".$gallery_id."'";
-        $resultsGallery = $conn->query($sqlGallery);
-        $galleries = mysqli_fetch_array($resultsGallery);
-    }else {
-        // var_dump("insert");
-        $gallery_title = "Add Gallery";
-        $inputQuery = "INSERT INTO gallery (`name`, `mainImage`, `images`) VALUES ('". $name ."', '".$mainImage."', '".json_encode($images)."')";
-    }
-
-    if($placeholder){
-
-    }
-
-
-    if(isset($_POST['submit-galleryEditForm'])) {
-
-        if(!empty($_FILES['mainImage']))
-        {
-          $path = "../images/";
-          $path = $path . basename( $_FILES['mainImage']['name']);
-      
-          if(move_uploaded_file($_FILES['mainImage']['tmp_name'], $path)) {
-            echo "The file ".  basename( $_FILES['mainImage']['name']). 
-            " has been uploaded";
-          } else{
-              echo "There was an error uploading the file, please try again!";
-          }
-        } 
-
-        
-//  var_dump($_POST);die();
-        if ($conn->query($inputQuery) === TRUE) {
-            echo "record inserted successfully";
-            header("Location:?gallery");
-            
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-    }
-
-
-?>
-
 <div class="content row">
     <!-- ------------ -->
     <!-- Gallery Edit Info -->
@@ -76,11 +19,11 @@
                         </div>
 
                         <div class="col-md-8 flex-wrap">
-                                <input type="file" class="form-control" name="mainImage" id="mainImage" placeholder="<?php echo $galleries['mainImage']; ?>" value="<?php echo $galleries['mainImage']; ?>">
+                            <input type="file" class="form-control" name="mainImage" id="mainImage">
                         </div>
 
                         <div class="p-2">
-                            <img style="width: 100px;" src="<?php echo $gallery['mainImage'];?>">
+                            <img style="width: 100px;" src="../images/<?php echo $galleries['mainImage'];?>">
                         </div>
                     </div>
 
@@ -100,8 +43,6 @@
                         <div class="col-md-6 ">
                             <label for="images" class="col-form-label">Images</label>
                         </div>
-
-<!-- ------- -->
                         <div class="col-md-8 mb-2 p-2">
                             <div class="input-row" id="input-row">
                                 <?php 
@@ -140,7 +81,7 @@
                         <div class="col-md-8 mb-2">
                             <a class="more-images btn btn-primary">+</a>
                         </div>
-                    
+                    </div>
                     
                     
                     <!-- Submit -->
@@ -164,5 +105,3 @@ const addFileNameToLabel = file => {
   document.querySelectorAll('input[type="file"]')
     .forEach(file => file.addEventListener('change', addFileNameToLabel))
 </script>
-
-    </script>

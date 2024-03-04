@@ -1,5 +1,6 @@
 <?php
     include '../config.php';
+    include 'functions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +31,7 @@
                         <div class="container-fluid align-items-center">
                         
                             <div class="flex-nowrap">
-                                <a href="?config" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                                <a href="?settings" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
                                     <img src="https://picsum.photos/50">
                                 </a>
 
@@ -54,7 +55,7 @@
                                     <a href="?contacts" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                                         <i class="fa-solid fa-book"></i>
                                     </a>
-                                    <a href="?config" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                    <a href="?settings" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                                         <i class="fa-solid fa-gear"></i>
                                     </a>
                                 </div>
@@ -65,22 +66,22 @@
                 <div class="col-md p-3 min-vh-100">
                     <!-- content -->
                     <?php
-                    $page = 'settings';
+                    $page = 'views/settings';
 
                     if(isset($_GET['settings'])) {
-                        $page = 'settings';
+                        $page = 'views/settings';
                     }elseif(isset($_GET['about'])) {
-                        $page = 'about';
+                        $page = 'views/about';
                     }elseif(isset($_GET['news'])) {
-                        $page = 'news';
+                        $page = 'views/news';
                     }elseif(isset($_GET['news_form'])) {
-                        $page = 'news_form';
+                        $page = 'views/news_form';
                     }elseif(isset($_GET['gallery'])) {
-                        $page = 'gallery';
+                        $page = 'views/gallery';
                     }elseif(isset($_GET['gallery_form'])) {
-                        $page = 'gallery_form';
+                        $page = 'views/gallery_form';
                     }elseif(isset($_GET['contacts'])) {
-                        $page = 'contacts';
+                        $page = 'views/contacts';
                     }
                     include $page . ".php";
 

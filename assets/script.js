@@ -25,4 +25,6 @@ $(document).ready(function(){
       var rowToDelete = $(this).data('row');
       $('#images' + rowToDelete).closest('.input-row').remove();
   });
+    
 });
+

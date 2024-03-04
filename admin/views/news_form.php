@@ -1,57 +1,3 @@
-<?php
-    $news_id = $_GET['news_id'];
-    $name = $_POST['name'];
-    $main_image = $_FILES['main_image']['name'];
-    $context = $_POST['context'];
-    
-   
-
-    if($_GET['news_id']) {
-        // var_dump("update");
-        $news_title = "Edit News";
-        $inputQuery = "UPDATE news SET `name` = '". $name ."', `main_image` = '". $main_image ."', `context` = '". $context ."' WHERE news_id = '". $news_id ."'";
-
-        $sqlNews = "SELECT `name`, `main_image`, `context` FROM news WHERE news_id='".$news_id."'";
-        $resultsNews = $conn->query($sqlNews);
-        $news = mysqli_fetch_array($resultsNews);
-    }else {
-        // var_dump("insert");
-        $news_title = "Add News";
-        $inputQuery = "INSERT INTO news (`name`, `main_image`, `context`) VALUES ('". $name ."', '".$main_image."', '".$context."')";
-    }
-
-    // if($placeholder){
-
-    // }
-    
-
-    if(isset($_POST['submit-newsEditForm'])) {
-
-        if(!empty($_FILES['main_image']))
-        {
-          $path = "../images/";
-          $path = $path . basename( $_FILES['main_image']['name']);
-      
-          if(move_uploaded_file($_FILES['main_image']['tmp_name'], $path)) {
-            echo "The file ".  basename( $_FILES['main_image']['name']). 
-            " has been uploaded";
-          } else{
-              echo "There was an error uploading the file, please try again!";
-          }
-        } 
-
-        if ($conn->query($inputQuery) === TRUE) {
-            echo "record inserted successfully";
-            header("Location:?news");
-            
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-        //  var_dump($_POST);die();
-        
-    }
-?>
-
 <div class="content row">
     <!-- ------------ -->
     <!-- News Edit Info -->
@@ -73,7 +19,12 @@
                         </div>
 
                         <div class="col-md-8 flex-wrap">
-                                <input type="file" class="form-control" name="main_image" id="main_image" placeholder="<?php echo $news['main_image']; ?>" value="<?php echo $news['main_image']; ?>">
+                                <input type="file" class="form-control" name="main_image" id="main_image">
+                            <!-- <div class="input-group custom-file-button">
+                                <label class="input-group-text" for="main_image" role="button">Browse...</label>
+                                <label for="main_image" class="form-control" id="review-image-label" role="button"></label>
+                                <input type="file" class="d-none" id="main_image" name="main_image">
+                            </div> -->
                         </div>
 
                         <div class="p-2">
@@ -100,11 +51,12 @@
 
 <!-- ------- -->
                         <div class="col-md-12 mb-2 p-2">
-                        <textarea id="editor" name="context"></textarea>
+                        <textarea id="editor" name="context" ><?php echo $news['context']; ?></textarea>
+                        </div>
 
 
                             
-                        </div>
+                    </div>
                     
                     
                     

@@ -25,11 +25,13 @@
                         <th scope="col">Name</th>
                         <th scope="col">Main Image</th>
                         <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         
                         <?php
+                        $count = 0;
                             foreach ($galleryResults as $galleries){
                         ?>
                         <tr>
@@ -37,8 +39,13 @@
                             <td><?php echo $galleries['name']; ?></td>
                             <td><?php echo $galleries['mainImage']; ?></td>
                             <td><a class="btn btn-success" href="?gallery_form&galleryID=<?php echo $galleries['galleryID'];?>" role="button"><i class="fa-solid fa-pencil"></i> Edit</a></td>
+                            <td><a href="?gallery&delete=<?php echo $galleries['galleryID'];?>" onClick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger" role="button" ><i class="fa-solid fa-trash"></i> Delete</a></td>
+
+
+                            
                         </tr>
                         <?php
+                        $count++;
                             }?>
                     </tbody>
                     </table>

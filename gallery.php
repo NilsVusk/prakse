@@ -22,7 +22,7 @@ $gallery = mysqli_fetch_array($results);
             ?>
                 <div class="col-md-4 p-3">
                     <a href="?gallery_id&galleryID=<?php echo $result["galleryID"]; ?>">
-                        <img class="rounded border border-secondary w-100 p-3 m-3" src="<?php echo $result['mainImage']; ?>">
+                        <img class="rounded border border-secondary w-100 p-3 m-3" src="images/<?php echo $result['mainImage']; ?>">
                         <div class="p-2 w-100">
                             
                             <p><?php echo $result['name']; ?></p>
