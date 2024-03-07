@@ -61,16 +61,18 @@
                                     foreach(json_decode($galleries['images'], true) as $image){
                                         
 
-                                        if ($count == 0){?>
-                                            <div class="input-row template" id="input-row">
+                                        ?>
+                                            <div class="input-row template">
 
-                                                <input type="file" class="form-control images" name="images[]" id="images<?php echo $count; ?>" placeholder="<?php echo $image; ?>" value="<?php echo $image; ?>">
+                                                <input type="file" class="form-control images" name="images[]" id="images<?php echo $count; ?>" placeholder="<?php echo $image; ?>" value="<?php echo $image; ?>" data-count="<?php echo $count; ?>">
                                                 
                                                 <a class="delete-image btn btn-danger">-</a>
+
+                                                <img src="../images/<?php echo $image ?>" style="width:75px">
                                             </div>
 
                                 <?php
-                                        }
+                                        
                                         $count++;
                                         
                                     }
@@ -95,13 +97,13 @@
 </div>
 <script>
 
-const addFileNameToLabel = file => {
-    const fileName = file.target.files[0].name
-    const customLabel = file.target.nextElementSibling
-    customLabel.textContent = fileName
-  }
+// const addFileNameToLabel = file => {
+//     const fileName = file.target.files[0].name
+//     const customLabel = file.target.nextElementSibling
+//     customLabel.textContent = fileName
+//   }
   
-  // Aply to each `.custom-file-label`
-  document.querySelectorAll('input[type="file"]')
-    .forEach(file => file.addEventListener('change', addFileNameToLabel))
+//   // Aply to each `.custom-file-label`
+//   document.querySelectorAll('input[type="file"]')
+//     .forEach(file => file.addEventListener('change', addFileNameToLabel))
 </script>

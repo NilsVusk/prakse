@@ -2,12 +2,25 @@
 if(isset($_POST['submit-webform'])) {
 
 
-
+    $logo = $_FILES['logo']['name'];
     $adress = $_POST['adress'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+
+
+    if(!empty($logo)){
+        $path = "../images/";
+        $path = $path . basename( $_FILES['logo']['name']);
+    
+        if(move_uploaded_file($_FILES['logo']['tmp_name'], $path)) {
+          echo "The file ".  basename( $_FILES['logo']['name'])." has been uploaded";
+        }else{
+            echo "There was an error uploading the file, please try again!";
+        }
+      }
+
+
     $inputQuery = "UPDATE config SET logo = '". $logo ."', adress = '". $adress ."', email = '". $email ."', phone ='". $phone . "'";
-    var_dump($inputQuery);
     if ($conn->query($inputQuery) === TRUE) {
         echo "record inserted successfully";
     } else {

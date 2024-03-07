@@ -1,30 +1,24 @@
-// $(document).ready(function(){
-//   $("button").click(function(){
-//     $(".navbar").slideToggle();
-//   });
-// });
-
 $(document).ready(function(){
 
   
 
-  var rowNumber = 1;
   
-  $('.more-images').click(function(){
-    var newRow = $('.template').clone().removeClass('template').show();
+  $('body').on('click', '.more-images', function() {
+    var newRow = $('#input-row .template:last-child').clone().show();
 
-    
-    newRow.find('.images').attr('id', 'images' + rowNumber).val('');
-    newRow.find('.delete-image').attr('data-row', rowNumber);
+    var count = $('#input-row .template:last-child input').attr('data-count');
+    count = parseInt(count) + 1;
+
+    newRow.find('.images').attr('id', 'images' + count).val('');
+    newRow.find('img').remove();
+    newRow.find('.images').attr('data-count', count);
     newRow.appendTo('#input-row');
-    rowNumber++;
     
 });
 
-  $('#input-row').on('click', '.delete-image', function() {
-      var rowToDelete = $(this).data('row');
-      $('#images' + rowToDelete).closest('.input-row').remove();
+  $('.input-row').on('click', '.delete-image', function() {
+    $(this).closest('.input-row').remove();
   });
-    
+  
 });
 

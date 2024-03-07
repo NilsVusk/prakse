@@ -1,10 +1,15 @@
+<?php
+ $configSql = "SELECT * FROM config";
+ $configResults = $conn->query($configSql);
+ $config = mysqli_fetch_array($configResults);
+?>
 <div class="content row">
     <!-- ------------ -->
     <!-- Website Info -->
     <!-- ------------ -->
 
     <div class="col-md-6 px-3 pb-2">
-        <form method="post" name="website-form">
+        <form method="post" name="website-form" enctype="multipart/form-data">
             <div class="card row">
                 <h5 class="card-header">Website Info</h5>
 
@@ -16,10 +21,10 @@
                         </div>
 
                         <div class="col-md-8 flex-wrap">
-                        <input type="file" class="form-control" name="logo" id="logo" value="<?php echo $config['logo']; ?>">
+                        <input type="file" class="form-control" name="logo" id="logo">
                         </div>
                         <div class="p-2">
-                            <img src="<?php echo $config['logo'];?>">
+                            <img src="../images/<?php echo $config['logo'];?>">
                         </div>
                     </div>
 

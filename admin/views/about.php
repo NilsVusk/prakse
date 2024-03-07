@@ -49,44 +49,55 @@
                     <div class="col-md-8 mb-2 p-2">
                         <div class="input-row" id="input-row">
                             <?php 
+                            
                             if (!$about['image']){
                                 ?>
-                                <div class="input-row template" id="input-row">
+                                <div class="input-row template mb-2 p-2" id="input-row">
                                 <input type="file" class="form-control images" name="images[]" id="images">
                                 
-                                <a class="delete-image btn btn-danger"></a>
+                                <a class="delete-image btn btn-danger">-</a>
+
+                                
 
                                 </div>
                                 
                                 
                                 <?php
                             }else{ 
+                                
                                 $count = 0;
-
                                 foreach(json_decode($about['image'], true) as $aboutImage){
                                     
 
-                                    if ($count == 0){?>
-                                        <div class="input-row template" id="input-row">
+                                  ?>
+                                    
+                                        <div class="input-row template mb-2 p-2" id="input-row">
 
-                                            <input type="file" class="form-control images" name="images[]" id="images<?php echo $count; ?>">
-                                            
+                                            <input type="file" class="form-control images" name="images[]" id="images<?php echo $count; ?>" data-count="<?php echo $count; ?>">
+
+                                       
                                             <a class="delete-image btn btn-danger">-</a>
+
+                                            <img src="../images/<?php echo $aboutImage ?>" style="width:75px">
+                                        
+                                            
                                         </div>
+                                        
+                                        
                                         
 
                             <?php
-                                    }
-                                    $count++;
+                                    
                                     
                                 }
-                                } 
+                            } 
                                 ?>
                         </div>
                     </div>
                     <div class="col-md-8 mb-2">
                         <a class="more-images btn btn-primary">+</a>
                     </div>
+                    
                 </div>
 
                 <!-- Submit -->
@@ -107,14 +118,17 @@
         });
     });
 
-    const addFileNameToLabel = file => {
-        const fileName = file.target.files[0].name
-        const customLabel = file.target.nextElementSibling
-        customLabel.textContent = fileName
-    }
+    // const addFileNameToLabel = file => {
+    //     const fileName = file.target.files[0].name
+    //     const customLabel = file.target.nextElementSibling
+    //     customLabel.textContent = fileName
+    // }
     
-    // Aply to each `.custom-file-label`
-    document.querySelectorAll('input[type="file"]')
-        .forEach(file => file.addEventListener('change', addFileNameToLabel))
+    // // Aply to each `.custom-file-label`
+    // document.querySelectorAll('input[type="file"]')
+    //     .forEach(file => file.addEventListener('change', addFileNameToLabel))
+
+
+    
 
 </script>

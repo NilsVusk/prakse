@@ -10,4 +10,16 @@ if(isset($_GET['news_form']) || isset($_GET['news'])) {
 }elseif(isset($_GET['settings'])) {
     include 'functions/settings.php';
 }
+
+function restructureFilesArray($files)
+{
+    $output = [];
+    foreach ($files as $attrName => $valuesArray) {
+        foreach ($valuesArray as $key => $value) {
+            $output[$key][$attrName] = $value;
+        }
+    }
+    return $output;
+}
 ?>
+

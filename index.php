@@ -25,7 +25,7 @@
             
                   <header>
                         <div class="logo text-center my-2">
-                            <a href="?home"> <img src="<?php echo $config['logo'];?>"> </a>
+                            <a href="?home"> <img src="images/<?php echo $config['logo'];?>"> </a>
                         </div>
 
                         <nav class="navbar navbar-expand-md bg-body-tertiary">
