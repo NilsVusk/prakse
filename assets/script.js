@@ -19,6 +19,19 @@ $(document).ready(function(){
   $('.input-row').on('click', '.delete-image', function() {
     $(this).closest('.input-row').remove();
   });
+
+  $('.delete-news').click(function(){
+    var news_id = $(this).val();
+    $.ajax({
+      url: 'functions.php',
+      data:{ test: 'news_delete', id: news_id },
+      type: "POST",
+      success: function(json){
+          console.log(json);
+      }
+  });
+
+  });
   
 });
 

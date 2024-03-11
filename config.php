@@ -10,6 +10,7 @@ $username = "admin1";
 $password = "admin1";
 $dbname = "prakse";
 
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 

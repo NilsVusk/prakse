@@ -58,6 +58,10 @@
                                     <a href="?settings" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                                         <i class="fa-solid fa-gear"></i>
                                     </a>
+                                    <a href="?products" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div> 
@@ -82,6 +86,10 @@
                         $page = 'views/gallery_form';
                     }elseif(isset($_GET['contacts'])) {
                         $page = 'views/contacts';
+                    }elseif(isset($_GET['products'])) {
+                        $page = 'views/products';
+                    }elseif(isset($_GET['products_form'])) {
+                        $page = 'views/products_form';
                     }
                     include $page . ".php";
 
