@@ -7,6 +7,7 @@ if(isset($_POST['submit-webform'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
 
+    $inputQuery = "UPDATE config SET logo = '". $logo ."', adress = '". $adress ."', email = '". $email ."', phone ='". $phone . "'";
 
     if(!empty($logo)){
         $path = "../images/";
@@ -17,10 +18,13 @@ if(isset($_POST['submit-webform'])) {
         }else{
             echo "There was an error uploading the file, please try again!";
         }
-      }
+
+      }elseif(empty($logo)){
+        $inputQuery = "UPDATE config SET adress = '". $adress ."', email = '". $email ."', phone ='". $phone . "'";
+        }
 
 
-    $inputQuery = "UPDATE config SET logo = '". $logo ."', adress = '". $adress ."', email = '". $email ."', phone ='". $phone . "'";
+    
     if ($conn->query($inputQuery) === TRUE) {
         echo "record inserted successfully";
     } else {

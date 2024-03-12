@@ -5,7 +5,7 @@
     $mainImage = $_FILES['mainImage']['name'];
     $images = $_FILES['images']['name'];
 
-    
+
 
     if(isset($_GET['delete'])) {
         //Check if there is something in $_GET['id'].
@@ -43,7 +43,8 @@
 
     if(isset($_POST['submit-galleryEditForm'])) {
 
-        if(!empty($_FILES['mainImage'])){
+        
+        if(!empty($mainImage)){
           $path = "../images/";
           $path = $path . basename( $_FILES['mainImage']['name']);
       
@@ -52,7 +53,14 @@
           }else{
               echo "There was an error uploading the file, please try again!";
           }
-        }
+        }elseif(empty($mainImage)){
+            if($_GET['galleryID']) {
+                $inputQuery = "UPDATE gallery SET `name` = '". $name ."', `images` = '". json_encode($images) ."' WHERE galleryID = '". $gallery_id ."'";
+        
+            }else {
+                $inputQuery = "INSERT INTO gallery (`name`, `images`) VALUES ('". $name ."', '".json_encode($images)."')";
+            }
+        } 
 
         if(!empty($images)){
             foreach(restructureFilesArray($_FILES[ 'images' ]) as $image){

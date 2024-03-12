@@ -11,10 +11,11 @@
                     </div>
 
                     <div class="col-md-8 flex-wrap">
-                    <input type="file" class="form-control" name="image" id="image">
+                        <input type="file" class="form-control" name="image" id="image" accept="image/*" value="">
+
                     </div>
                     <div class="p-2">
-                        <img src="../images/<?php echo $products['image'];?>">
+                        <img style="width: 100px;" src="../images/<?php echo $products['image'];?>">
                     </div>
                 </div>
 
@@ -37,7 +38,7 @@
                         <label for="price" class="col-form-label">Price</label>
                     </div>
                     <div class="col-md-8 mb-2 p-2">
-                        <input type="number" id="price" name="price" class="form-control" placeholder="0.00" value="<?php echo $products['price']; ?>">
+                        <input type="number" id="price" name="price" class="form-control" placeholder="0.00" step="0.01" value="<?php echo $products['price']; ?>">
                     </div>
                 </div>
 
@@ -68,4 +69,5 @@ $(document).ready(function() {
         height: 300
     });
 });
+
 </script>

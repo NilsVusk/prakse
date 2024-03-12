@@ -41,7 +41,7 @@
 
     if(isset($_POST['submit-newsEditForm'])) {
         
-        if(!empty($_FILES['main_image']))
+        if(!empty($main_image))
         {
           $path = "../images/";
           $path = $path . basename( $_FILES['main_image']['name']);
@@ -52,6 +52,12 @@
           } else{
               echo "There was an error uploading the file, please try again!";
           }
+        }elseif(empty($main_image)){
+            if($_GET['news_id']) {
+                $inputQuery = "UPDATE news SET `name` = '". $name ."', `context` = '". $context ."' WHERE news_id = '". $news_id ."'";
+            }else {
+                $inputQuery = "INSERT INTO news (`name`, `context`) VALUES ('". $name ."', '".$context."')";
+            }
         } 
 
         if ($conn->query($inputQuery) === TRUE) {

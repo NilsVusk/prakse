@@ -42,8 +42,8 @@
                             <td><?php echo $products['price']; ?></td>
                             <td><?php echo $products['desc']; ?></td>
                             <td><a class="btn btn-success" href="?products_form&product_id=<?php echo $products['product_id'];?>" role="button"><i class="fa-solid fa-pencil"></i> Edit</a></td>
-                            <!-- <td><a href="?news&deleteID=<?php echo $products['news_id'];?>" onClick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger" role="button" ><i class="fa-solid fa-trash"></i> Delete</a></td> -->
-                            <!-- <td><button class="btn btn-danger delete-news" role="button"  value="<?php echo $products['news_id'];?>"><i class="fa-solid fa-trash"></i> Delete</button></td> -->
+                            <td><a href="?products&deleteID=<?php echo $products['product_id'];?>" onClick="return confirm('Are you sure you want to delete this?');" class="btn btn-danger" role="button" ><i class="fa-solid fa-trash"></i> Delete</a></td>
+                            <!-- <td><button class="btn btn-danger delete-news" role="button"  value="<?php echo $products['product_id'];?>"><i class="fa-solid fa-trash"></i> Delete</button></td> -->
                         </tr>
                         <?php
                             }?>

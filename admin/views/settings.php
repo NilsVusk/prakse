@@ -24,7 +24,7 @@
                         <input type="file" class="form-control" name="logo" id="logo">
                         </div>
                         <div class="p-2">
-                            <img src="../images/<?php echo $config['logo'];?>">
+                            <img style="width: 100px;" src="../images/<?php echo $config['logo'];?>">
                         </div>
                     </div>
 

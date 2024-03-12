@@ -25,7 +25,7 @@
             
                   <header>
                         <div class="logo text-center my-2">
-                            <a href="?home"> <img src="images/<?php echo $config['logo'];?>"> </a>
+                            <a href="?home"> <img style="width: 100px;" src="images/<?php echo $config['logo'];?>"> </a>
                         </div>
 
                         <nav class="navbar navbar-expand-md bg-body-tertiary">
@@ -40,6 +40,7 @@
                                   <a class="nav-link" href="?gallery">Galērija</a>
                                   <a class="nav-link" href="?about">Par Mums</a>
                                   <a class="nav-link" href="?contacts">Kontakti</a>
+                                  <a class="nav-link" href="?products">Produkti</a>
                                 </div>
                               </div>
                             </div>
@@ -60,6 +61,10 @@
                             $page = 'gallery';
                         }elseif(isset($_GET['gallery_id'])){
                             $page = 'gallery_id';
+                        }elseif(isset($_GET['products'])){
+                            $page = 'products';
+                        }elseif(isset($_GET['products_id'])){
+                            $page = 'products_id';
                         }
                         include $page . ".php";
 
